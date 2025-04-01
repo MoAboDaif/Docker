@@ -3,135 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            background: #007bff;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        main {
-            padding: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        form {
-            margin-bottom: 2rem;
-            background: #fff;
-            padding: 1rem;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        form input, form button {
-            display: block;
-            width: 100%;
-            margin-bottom: 1rem;
-            padding: 0.5rem;
-            font-size: 1rem;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 2rem;
-        }
-        table th, table td {
-            border: 1px solid #ddd;
-            padding: 0.5rem;
-            text-align: left;
-        }
-        table th {
-            background: #007bff;
-            color: #fff;
-        }
-    </style>
+    <title>Welcome to Git Repository Application</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
     <header>
-        <h1>Modern Website</h1>
+        <h1>Welcome to the Git Repository Application</h1>
+        <nav>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#getting-started">Getting Started</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
-        <h2>Simple Authentication</h2>
-        <form method="POST">
-            <input type="text" name="username" placeholder="Enter Username" required>
-            <input type="password" name="password" placeholder="Enter Password" required>
-            <button type="submit" name="login">Login</button>
-        </form>
-
-        <h2>Insert Data</h2>
-        <form method="POST">
-            <input type="text" name="data" placeholder="Enter Data" required>
-            <button type="submit" name="insert">Insert</button>
-        </form>
-
-        <h2>Fetched Data</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Data</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                // Database connection
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "test_db";
-
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-
-                // Simple authentication
-                if (isset($_POST['login'])) {
-                    $user = $_POST['username'];
-                    $pass = $_POST['password'];
-                    $authQuery = "SELECT * FROM users WHERE username='$user' AND password='$pass'";
-                    $authResult = $conn->query($authQuery);
-                    if ($authResult->num_rows > 0) {
-                        echo "<p>Login successful!</p>";
-                    } else {
-                        echo "<p>Invalid credentials!</p>";
-                    }
-                }
-
-                // Insert data
-                if (isset($_POST['insert'])) {
-                    $data = $_POST['data'];
-                    $insertQuery = "INSERT INTO data_table (data) VALUES ('$data')";
-                    if ($conn->query($insertQuery) === TRUE) {
-                        echo "<p>Data inserted successfully!</p>";
-                    } else {
-                        echo "<p>Error: " . $conn->error . "</p>";
-                    }
-                }
-
-                // Fetch data
-                $fetchQuery = "SELECT * FROM data_table";
-                $result = $conn->query($fetchQuery);
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr><td>" . $row['id'] . "</td><td>" . $row['data'] . "</td></tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='2'>No data found</td></tr>";
-                }
-
-                $conn->close();
-                ?>
-            </tbody>
-        </table>
+        <section id="features">
+            <h2>Features</h2>
+            <p>This application allows you to manage your Git repositories with ease. You can create, clone, and manage repositories directly from the web interface.</p>
+        </section>
+        <section id="getting-started">
+            <h2>Getting Started</h2>
+            <p>To get started, simply create an account and log in. You can then create your first repository and start collaborating!</p>
+        </section>
     </main>
+    <footer>
+        <p>&copy; 2023 Git Repository Application. All rights reserved.</p>
+    </footer>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
